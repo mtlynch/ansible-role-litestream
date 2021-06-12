@@ -1,0 +1,18 @@
+---
+- name: install litestream
+  ansible.builtin.apt:
+    deb: "https://github.com/benbjohnson/litestream/releases/download/v{{ litestream_version }}/litestream-v{{ litestream_version }}-linux-amd64.deb"
+
+- name: create litestream configuration file
+  ansible.builtin.template:
+    src: litestream.yml.j2
+    dest: /etc/litestream.yml
+    owner: "{{ litestream_config_file_owner }}"
+    group: "{{ litestream_config_file_group }}"
+    mode: "{{ litestream_config_file_mode }}"
+
+- name: enable litestream service
+  ansible.builtin.systemd:
+    name: litestream
+    state: "{{ litestream_service_state}}"
+    enabled: "{{ litestream_service_enabled }}"
