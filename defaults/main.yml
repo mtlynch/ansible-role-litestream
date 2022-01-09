@@ -1,5 +1,5 @@
 ---
-litestream_version: "0.3.5"
+litestream_version: "0.3.7"
 litestream_db_path: null
 litestream_replica_file_path: null
 litestream_config_file_owner: null
